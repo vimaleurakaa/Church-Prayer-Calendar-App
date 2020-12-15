@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>KPC Calender App</title>
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/fontawesome.min.css"
+    integrity="sha512-kJ30H6g4NGhWopgdseRb8wTsyllFUYIx3hiUwmGAkgA9B/JbzUBDQVr2VVlWGde6sdBVOG7oU8AL35ORDuMm8g=="
+    crossorigin="anonymous" />
+  <link rel="stylesheet" href="https://unpkg.com/onsenui/css/onsenui.css">
+  <link rel="stylesheet" href="https://unpkg.com/onsenui/css/onsen-css-components.min.css">
+  <link rel="stylesheet" href="./assets/css/main.css">
+  <link rel="stylesheet" href="./assets/css/calendar.css">
+  <script src="./assets/components/events-json.js"></script>
+</head>
+
+<body>
+  <!-- Partials, LIVE Code Renderer -->
+  <ons-navigator id="root" page="home.html" swipeable>
+
+  </ons-navigator>
+
+
+
+  <!-- Home PAGE Fragment -->
+  <template id="home.html">
+    <ons-page id="home">
+      <ons-toolbar>
+        <div id="tab" class="center">KPC Prayer Calender 2021</div>
+      </ons-toolbar>
+      <ons-row>
+        <ons-col class="home-banner-container">
+          <div class="home-banner" style="color: #fff;">
+
+            <p class="verse" style="padding: 20px;">
+              Verse of the Month<br><br>
+              The name of the Lord is a strong tower: the righteous runneth into it, and is safe.<br><br>
+              <span style="float: right;">Proverbs 18:10</span>
+            </p>
+          </div>
+          <div id="content"></div>
+        </ons-col>
+      </ons-row>
+      <ons-row>
+        <ons-col>
+          <div id="container" class="calendar-container"></div>
+        </ons-col>
+      </ons-row>
+      <ons-row>
+        <ons-col>
+          <ons-list>
+            <ons-list-header class="event-showcase-header">Today's Prayer Request</ons-list-header>
+            <ons-list-item class="event-detail-page list-border" modifier="chevron" tappable> Holiday Event 1
+            </ons-list-item>
+            <ons-list-item class="event-detail-page list-border" modifier="chevron" tappable> Holiday Event 2
+            </ons-list-item>
+            <ons-list-item class="event-detail-page list-border" modifier="chevron" tappable> Holiday Event 3
+            </ons-list-item>
+          </ons-list>
+        </ons-col>
+      </ons-row>
+  </template>
+
+
+  <!-- Event Details PAGE Fragment -->
+  <template id="event.html">
+    <ons-page id="event" style="background-color: red;">
+      <ons-toolbar>
+        <div class="left">
+          <ons-back-button onclick="backPress()">Page 1</ons-back-button>
+        </div>
+        <div class=" center">Event Details
+        </div>
+      </ons-toolbar>
+      <div class="event-page-container">
+        <div class="date-container">
+          <p class="selected-title">Selected Date</p>
+          <div>
+            <p style="display: inline-block;" class="selected-date">Dec 14 2020</p>
+            <i style="float: right;" class="far fa-calendar-alt"></i>
+          </div>
+        </div>
+
+
+        <ons-card class="card-header">
+          <div class="title">
+            Verse of the Day
+          </div>
+          <div class="content">
+            <p class="verse">The name of the Lord is a strong tower: the righteous runneth into it, and is safe.</p>
+            <p class="verse-auth">Proverbs 18:10</p>
+          </div>
+        </ons-card>
+
+        <div id="root_" class="event-wrapper">
+
+          <ons-list-item class="list-item-header">
+            <div class="center">
+              Prayer Points for the Day
+            </div>
+          </ons-list-item>
+
+
+          <ons-list class="prayer-list">
+            <ons-list-item class="border-list prayer-list-item" tappable>1. Pray for the peace in the Nation.
+            </ons-list-item>
+            <ons-list-item class="border-list prayer-list-item" tappable>2. Pray for the protection of our Nation from
+              the enemies,
+              violence and from the terrorists.</ons-list-item>
+            <ons-list-item class="border-list prayer-list-item" tappable>3. Pray for them who works in the Army to be
+              protected and for
+              their families.</ons-list-item>
+          </ons-list>
+
+
+          <!-- <ons-card class="card">
+            <div class="title card__title">Prayer Points</div>
+            <div class="content card__content">
+              <ol class="prayer-list">
+                <li>Simple "pull to refresh" functionality to update data, functionality to update data</li>
+                <li>Simple "pull to refresh" functionality to update data.</li>
+                <li>Simple "pull to refresh" functionality to update data.</li>
+                <li>Simple "pull to refresh" functionality to update data.</li>
+              </ol>
+            </div>
+          </ons-card> -->
+
+
+          <ons-list-item class="list-item-header">
+            <div class="center">
+              Holidays
+            </div>
+          </ons-list-item>
+
+
+          <ons-list class="prayer-list">
+
+            <ons-list-item class="list-item">
+              <div class="left list-item__left">
+                <div class="list-item__thumbnail calender-thumb">
+                  <div class="calender-thumb-date">12</div>
+                </div>
+              </div>
+              <div class="center list-item__center">Holiday event title</div>
+            </ons-list-item>
+
+            <ons-list-item class="list-item">
+              <div class="left list-item__left">
+                <div class="list-item__thumbnail calender-thumb">
+                  <div class="calender-thumb-date">13</div>
+                </div>
+              </div>
+              <div class="center list-item__center">Holiday event title</div>
+            </ons-list-item>
+
+
+            <ons-list-item class="list-item">
+              <div class="left list-item__left">
+                <div class="list-item__thumbnail calender-thumb">
+                  <div class="calender-thumb-date">31</div>
+                </div>
+              </div>
+              <div class="center list-item__center">Holiday event title</div>
+            </ons-list-item>
+
+
+        </div>
+
+
+      </div>
+      <div class="footer">
+        <ons-list-item class="list-item">
+          <div class="" style="text-align: center;">KPC Calendar 2021</div>
+        </ons-list-item>
+      </div>
+      <script>
+        eventsFragment();
+      </script>
+    </ons-page>
+  </template>
+
+
+  <!-- partial -->
+  <!-- <script src='https://unpkg.com/onsenui@2.5.1/js/onsenui.js'></script> -->
+  <script src="https://code.jquery.com/jquery-3.5.1.min.js"
+    integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/onsenui/js/onsenui.min.js"></script>
+
+  <script src="./assets/components/calender.js"></script>
+  <script src="./assets/components/events_fragment.js"></script>
+  <script src="./assets/main.js"></script>
+
+</body>
+
+</html>
