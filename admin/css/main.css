@@ -1,0 +1,66 @@
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+:root{
+    --primary :#009688;
+}
+
+body{
+    background: #F8F9FA !important;
+}
+.nav-bar{
+    width: 100%;
+    display: flex;
+    background-color: var(--primary);
+    box-shadow: 0 0 15px #ccc;
+    padding: 18px;
+    align-items: center;
+    color: #fff;
+    justify-content: space-between;
+}
+
+.logo-wrapper{
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.admin{
+    color: #fff;
+}
+
+.admin:hover{
+    color: #ccc ;
+}
+
+.table{
+    background-color: #fff;
+    margin: 20px 0;
+    box-shadow:  0 0 6px #ccc;
+    border-radius: 4px;
+}
+
+.table-head{
+    color: white;
+    background-color: var(--primary);
+}
+
+.form-card{
+    margin-top: 30px;
+}
+
+.form-control{
+    margin: 20px 0;
+}
+
+.spacer-top{
+    margin: 20px 0;
+}
+
+.prayer-input{
+    margin-right: 30px;
+    margin-top: 2px;
+    margin-bottom: 2px;
+}

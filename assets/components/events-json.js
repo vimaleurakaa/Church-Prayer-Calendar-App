@@ -1,31 +1,41 @@
-let events = {
-  "12/14/2020": [
-    {
-      id: "14 December 2020",
-      number: "01",
-      daily_verse: "For God so loved the world, that he gave his on...",
-      events: "Event Content from DB",
-      img: "https://www.w3schools.com/w3css/img_lights.jpg",
-      prayer_request: [
-        "1. Pray for the peace in the Nation.",
-        "2. End to Religion and caste related violence.",
-        "3. Data number three.",
-      ],
+// let events = {
+//   "12-25-2020": {
+//     prayerData: {
+//       "-MPIPDksSFnz1Q1seYCg": "data 1",
+//       "-MPIPDktXOuYnxTZO4bX": "data 2",
+//       "-MPIPDkuJbBATtHrLmo1": "data 3",
+//     },
+//   },
+//   "12-26-2020": {
+//     prayerData: {
+//       "-MPIQ3-gHJTpci4fwNEp": "2 data 1",
+//       "-MPIQ3-heag2TN85AZoc": "2 data 2",
+//       "-MPIQ3-ijmz3oTON4OzB": "2 data 3",
+//     },
+//   },
+// };
+
+let myEvents = {
+  "12-1-2020": {
+    prayerData: {
+      "-MPKFQ8v-WrBTxFISi8s": "Prayer Request 1",
+      "-MPKFQ8zWdAHxRz2r32L": "Prayer Request 2",
+      "-MPKFQ8zWdAHxRz2r32M": "Prayer Request 3",
+      "-MPKFQ9-zCgaHmGlWf2_": "Prayer Request 4",
     },
-  ],
-  "12/15/2020": [
-    {
-      id: "15 December 2020",
-      number: "01",
-      daily_verse: "Daily Verse 2",
-      events: "Event Content from DB 2nd CONTENT",
-      img: "https://www.w3schools.com/w3css/img_lights.jpg",
-      prayer_request: [
-        "1. Data 1",
-        "2. Data 2",
-        "3. Data number three.",
-        "3. Data number four.",
-      ],
+  },
+  "2020-12-03": {
+    prayerData: {
+      "-MPIPDksSFnz1Q1seYCg": "aa",
+      "-MPIPDktXOuYnxTZO4bX": "bb",
+      "-MPIPDkuJbBATtHrLmo1": "cc",
     },
-  ],
+  },
+  "2020-12-05": {
+    prayerData: {
+      "-MPIQ3-gHJTpci4fwNEp": "a",
+      "-MPIQ3-heag2TN85AZoc": "b",
+      "-MPIQ3-ijmz3oTON4OzB": "c",
+    },
+  },
 };

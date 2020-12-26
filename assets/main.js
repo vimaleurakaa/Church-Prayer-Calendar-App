@@ -8,22 +8,20 @@ $(document).ready(function () {
 
   function getSelectedDate(clickDate) {
     document.getElementById("root").pushPage("event.html");
-
     if (clickDate) {
       location.hash = `date?${clickDate}`;
     }
   }
+
+  //console.log(events);
 
   function calender() {
     $("#container").simpleCalendar({
       fixedStartDay: 0, // begin weeks by sunday
       disableEmptyDetails: true,
 
-      onCalenderLoad: function (currnetDate, currentEvent, allEvent) {},
-
-      onDateSelect: function (date, getData) {
-        //console.log("Clicked");
-        const dateValue = date.toLocaleDateString();
+      onDateSelect: function (date) {
+        const dateValue = date.toLocaleDateString().replaceAll("/", "-");
         getSelectedDate(dateValue);
       },
     });
