@@ -8,27 +8,44 @@ function eventsFragment() {
   };
 }
 
+// Main Fragment
 function dateFragment() {
   const urlPath = location.href.substring(location.href.indexOf("?") + 1);
   let database = JSON.parse(localStorage.getItem("database"));
+  const path = database[urlPath];
 
   if (database != null) {
-    const prayerdata = database[urlPath]["prayerData"];
     const prayer_root = document.getElementById("rootEvent");
+    const holiday_root = document.getElementById("rootHoliday");
+    const prayerdata = path["prayerData"];
+    const holidaydata = path["holidayData"];
+
     prayerData(prayer_root, prayerdata);
+    holidayData(holiday_root, holidaydata);
   } else {
-    root.innerHTML += `<h1>Please make sure your internet connection is Stable!</h1>`;
-    console.log("No Database found!!!");
+    prayer_root.innerHTML += `<h1>Please make sure your internet connection is Stable!</h1>`;
   }
 }
 
 //Map Prayer Data
 function prayerData(element, data) {
-  Object.values(data).map((i) => {
-    element.innerHTML += `<h1>${i}</h1>`;
-  });
+  if (data != undefined) {
+    Object.values(data).map((i) => {
+      element.innerHTML += `<h1>${i}</h1>`;
+    });
+  }
 }
 
+//Map Holiday Data
+function holidayData(element, data) {
+  if (data != undefined) {
+    Object.values(data).map((i) => {
+      element.innerHTML += `<h1>${i}</h1>`;
+    });
+  }
+}
+
+//Retrive firebase data & store local
 function getFirebaseData() {
   return firebase
     .database()

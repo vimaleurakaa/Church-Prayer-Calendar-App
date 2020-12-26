@@ -1,6 +1,8 @@
 ///////////////////////////////////
 
-let prayerData = [];
+let prayerdata = [];
+let holidaydata = [];
+const database = firebase.database().ref("data");
 
 function appendPrayerReuqest(id) {
   let prayerRequest = `
@@ -19,7 +21,7 @@ function appendHolidays(id) {
     <div class="col-12 d-flex" id="holiday_req_${id}">
           <input placeholder="Holiday Request ${
             id + 1
-          }" class="form-control prayer-input" type="text" value="">
+          }" class="form-control holiday-input" type="text" value="">
           <button type="button" onclick="delHoliday('${id}')" class="btn btn-danger m-auto">Delete</button>
     </div>`;
 
@@ -59,30 +61,56 @@ function getCalenderDate() {
   return mn + "-" + dd + "-" + yy;
 }
 
+//Retriving DOM Prayer Data
 function getPrayerData() {
   const element = document.getElementsByClassName("prayer-input");
-  for (var i = 0; i < element.length; i++) {
-    var obj = {};
+  for (i = 0; i < element.length; i++) {
+    let obj = {};
     obj["data"] = element[i].value;
-    prayerData.push(obj);
+    prayerdata.push(obj);
   }
-  console.log(prayerData);
+  console.log(prayerdata);
+}
+
+//Retriving DOM Holiday Data
+function getHolidayData() {
+  const element = document.getElementsByClassName("holiday-input");
+  for (i = 0; i < element.length; i++) {
+    let obj = {};
+    obj["data"] = element[i].value;
+    holidaydata.push(obj);
+  }
+  console.log(holidaydata);
+}
+
+function sendData() {
+  if (getCalenderDate() != "NaN-NaN-NaN") {
+    getPrayerData();
+    getHolidayData();
+
+    //UpdatePrayer Data
+    for (i = 0; i < prayerdata.length; i++) {
+      setPrayerData(prayerdata[i].data);
+    }
+    //UpdateHoliday Data
+    for (i = 0; i < holidaydata.length; i++) {
+      let datepicker = new Date(document.getElementById("date-picker").value);
+      setHolidayData(datepicker.getDate() + " - " + holidaydata[i].data);
+    }
+  } else alert("Input Date cannot be empty");
 }
 
 //Write data to realtime database
-function sendData() {
-  getPrayerData();
-  //UpdatePrayer Data
-  for (i = 0; i < prayerData.length; i++) {
-    setPrayerData(prayerData[i].data);
-  }
+function setHolidayData(value) {
+  const date = database.child(getCalenderDate());
+  const child = date.child("holidayData");
+  const key = child.push().key;
+  child.update({ [key]: value });
 }
-
+//Write data to realtime database
 function setPrayerData(value) {
-  const database = firebase.database().ref("data");
   const date = database.child(getCalenderDate());
   const child = date.child("prayerData");
   const key = child.push().key;
-
   child.update({ [key]: value });
 }

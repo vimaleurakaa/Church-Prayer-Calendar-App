@@ -1,11 +1,7 @@
 ons.forcePlatformStyling("ios");
 
 $(document).ready(function () {
-  const rootDiv = document.getElementById("root");
-  const fragmentId = location.hash.substr(1);
-
-  // Updates dynamic content based on the fragment identifier.
-
+  //Navigate Page on Date Select
   function getSelectedDate(clickDate) {
     document.getElementById("root").pushPage("event.html");
     if (clickDate) {
@@ -13,11 +9,15 @@ $(document).ready(function () {
     }
   }
 
-  //console.log(events);
+  //Navigate Page direct URL
+  if (location.hash.split("?")[0] === "#date") {
+    document.getElementById("root").pushPage("event.html");
+  }
 
+  //init Calender
   function calender() {
     $("#container").simpleCalendar({
-      fixedStartDay: 0, // begin weeks by sunday
+      fixedStartDay: 0,
       disableEmptyDetails: true,
 
       onDateSelect: function (date) {
