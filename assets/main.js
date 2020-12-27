@@ -1,4 +1,4 @@
-ons.forcePlatformStyling("ios");
+//ons.forcePlatformStyling("ios");
 
 $(document).ready(function () {
   //Navigate Page on Date Select
@@ -21,7 +21,12 @@ $(document).ready(function () {
       disableEmptyDetails: true,
 
       onDateSelect: function (date) {
-        const dateValue = date.toLocaleDateString().replaceAll("/", "-");
+        let d = new Date(date);
+        dd = d.getDate();
+        mn = d.getMonth();
+        mn++;
+        yy = d.getFullYear();
+        const dateValue = mn + "-" + dd + "-" + yy;
         getSelectedDate(dateValue);
       },
     });

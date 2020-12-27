@@ -1,5 +1,3 @@
-///////////////////////////////////
-
 let prayerdata = [];
 let holidaydata = [];
 const database = firebase.database().ref("data");
@@ -49,6 +47,7 @@ $(document).ready(function () {
   $("#add-holiday").click(function () {
     appendHolidays(holidaycount++);
   });
+  //getFirebaseData();
 });
 
 //Retrive Selected Date
@@ -114,3 +113,20 @@ function setPrayerData(value) {
   const key = child.push().key;
   child.update({ [key]: value });
 }
+
+// //Retrive firebase data & store local
+// function getFirebaseData() {
+//   return firebase
+//     .database()
+//     .ref("data")
+//     .once("value")
+//     .then(function (snapshot) {
+//       let value = snapshot.val();
+//       localStorage.setItem("admin_database", JSON.stringify(value));
+//     });
+// }
+
+// //Append data to HTML
+
+// let firebasedata = JSON.parse(localStorage.getItem("admin_database"));
+// console.log(firebasedata);
