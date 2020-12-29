@@ -96,6 +96,8 @@ function sendData() {
       let datepicker = new Date(document.getElementById("date-picker").value);
       setHolidayData(datepicker.getDate() + " - " + holidaydata[i].data);
     }
+
+    document.getElementById();
   } else alert("Input Date cannot be empty");
 }
 

@@ -17,20 +17,11 @@ body {
     text-align: center;
 }
 
-.calendar-container{
-    background-color: #fff;
-    position: relative;
-    max-width: 500px;
-    padding: 20px;
-    margin: auto;
-}
-
-
 .home-banner{
     display: flex;
     width: 100%;
     height: 240px;
-    border-radius: 10px;
+    /* border-radius: 10px; */
     background:linear-gradient(to right, rgba(0,0,0, .5) ,rgba(0,0,0, .8) ),  url(https://image.freepik.com/free-photo/image-human-brain_99433-298.jpg) center;
     background-size: cover;
     align-items: center;
@@ -47,9 +38,9 @@ body {
     padding: 30px;
 } */
 
-.home-banner-container{
+/* .home-banner-container{
     padding: 20px;
-}
+} */
 
 
 .list-border{
@@ -66,7 +57,7 @@ body {
  }
 
  .date-container{
-     background:linear-gradient(to right, rgba(0, 0, 0, .5), rgba(0, 0, 0, .5)), url(https://source.unsplash.com/random?nature) center no-repeat;
+     background:linear-gradient(to right, rgba(0, 0, 0, .5), rgba(0, 0, 0, .5)), url(https://source.unsplash.com/random) center no-repeat;
      background-size: cover;
      padding: 10px 20px 50px 20px;
      background-color: #009688; 
@@ -155,6 +146,110 @@ body {
 .prayer-list-item{
     padding: 10px;
 }
+
+/*///////////////////////////// Calender styling //////////////////////*/
+
+.calendar-container{
+    background-color: #fff;
+    position: relative;
+    max-width: 500px;
+    margin: auto;
+}
+
+.calendar thead{
+    background: #2e6dd4;
+    color: #fff;
+    font-size: 1em !important;
+    font-weight:  400 !important;
+}
+
+.calendar tbody td{
+    background: #fff;
+    border-right: 1px solid #ccc;
+    border-bottom: 1px solid #ccc;
+}
+
+.calendar header{
+    border-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAAwCAYAAADQMxCBAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAEtJREFUeNpiuPno13+m//8ZGJgYgIDpP5hAcP/DxBj+o3DRWWg6kBT/R+b+w6oEUwzdKCxWMvzH4lxU7uFjx3eCGKLMIB6IYAAIMAAcbUT0GQlfPAAAAABJRU5ErkJggg==) 0 0 4 0 fill;
+    border-top: 1px solid #becbed;
+    text-align: left;
+}
+
+.calendar header .month{
+    color: #000;
+    font-size: 1.2em !important;
+    font-weight: 400 !important;
+}
+
+.calendar header .month .year{
+    color: #000;
+    font-size: 1em !important;
+    font-weight: 400 !important;
+}
+
+.ci-btn {
+    display: inline-block;
+    line-height: 23px;
+    font-family: Arial;
+    font-weight: bold;
+    font-size: 13px;
+    margin: 6px 6px 5px;
+    padding: 0 6px 1px;
+    min-width: 14px;
+    color: #2e4987;
+    text-shadow: 0 1px 0 #fff;
+  }
+  .ci-btn.ci-btn-icn {
+    padding: 3px;
+  }
+  .ci-btn-right.ci-btn-icn {
+    padding-left: 5px;
+  }
+  .ci-btn-left.ci-btn-icn {
+    padding-right: 6px;
+  }
+  .ci-btn-left {
+    margin-right: -1px;
+    padding-right: 7px;
+    position: relative;
+    border-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAgAAAAhCAYAAADkrOp1AAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAPNJREFUeNpi/P//P0PDvOdCDAwM0UCsDsQgNhywACUlGRkZmvxtBCzV5NiVuNiZOGGSd5/+ZGBhZWaMCrATsFWTYVP/BzTtx8+/cN2/f/9jYAEK6kiLMin9/P2XAR38/fefgeXvPwZ2hv+MrH8w5YEKGBiYGAgAFhABtBorAInjVwA3gXZWEK+AbDcQ7ch/tPMFoZAk6EiG/6OxCdPIxMLM+PvP3/+//0MF0DGTEB/z82dvft8HmYINM1nqcO8/ee3zsfvPf1z99ef/D3RrGIHZn/fJq9+uW459NHv36Y8oUBEnugIQzQHEOtCygR1ZAUCAAQDx3KURavzvFAAAAABJRU5ErkJggg==)
+      4 2 5 4 fill;
+    border-style: solid;
+    border-width: 4px 2px 5px 4px;
+  }
+  .ci-btn-right {
+    margin-left: -1px;
+    position: relative;
+    padding-left: 6px;
+    border-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAgAAAAhCAYAAADkrOp1AAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAPVJREFUeNpirJ/7jAEIljEgwDsgvgnESxuSJN8x3nny47+yNDtc9tvPf99vPfp5b+ORD8f//2doYPn9+x/Dj59/4QqYGRk4tRXYtdlYBVnXH/wQxfL333+GP3//MaADaREmJaCcNgtI7s9fBiyAkQWol42JgQBgATqEAYRxK2AgoABE/KfMCooVEHYDAzXc8O8/TUPyPyFfMFAekiMkNnGYAMw0f5iZGP8wwdyAjp+9/n1PmJ/5GUbG+fXn/4/7z39cPXnt8zFLHe79LAfPf2REzv5sLIzfhfhYXid4Cp+SEWM9xvgf4kJfJEN+QsuIK0D8AyDAACLkp1ZqVdtqAAAAAElFTkSuQmCC)
+      4 4 5 2 fill;
+    border-style: solid;
+    border-width: 4px 4px 5px 2px;
+  }
+  .ci-icn-left-ip {
+    background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABIAAAASCAYAAABWzo5XAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAOVJREFUeNpi/P//PwM1AOOgM4gBZBApWM+znR+Ie9HFmUixVN+rI5mRkeEmkFmELsdCpAFmQGoyEJvhCgkWAgZIAKl2IE4gZBkLDgPYgFQO0BtNQBdwE+NqFiyGeAANmAg0QI2UCMUI7BAvAzMJUX4FaqQj71+//05ctvGM8szlRxm+ff+FVePFbRWMxCRIUBjlv3n3pb5/3gHuLfuukG0QDIBirevKzeexrVN3Mly78wKnQcSmaGD6+X9m3Y4L/52iJv0Hpuz/6GpIzSLJn758f9E9ay/FBoEwPxBj5LXBV4wABBgAtqYh/GnslxIAAAAASUVORK5CYII=);
+    height: 18px;
+    width: 18px;
+  }
+  .ci-icn-right-ip {
+    background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABIAAAASCAYAAABWzo5XAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAOVJREFUeNpi/P//PwM1ABMDlQDtDNL36ugFYn5quKiIkZHhJtCwZFIMYkQPbKAByAKngDj34raKU5SGkRkQnwQaPh+IJagR2AlA794BGlYExGwUxRowBLiBVC/QwGtAwzwojn5JMX65EC8DM3RxFmIN4OJkY0gNt2KICTR9xMbKfJYsg3ycdBgKkxy+igjxtAC5fUD8iySDtFQkGKqz3Rl01CUXA7llQPwCl1qsBokIcjPkxNkxBLrrg7yQBU1PhGLjPwrunrX3/6cv318A2cnocvgwNsFeIOYnxRAQZhx05RFAgAEAcLuf4OMF+FwAAAAASUVORK5CYII=);
+    height: 18px;
+    width: 18px;
+  }
+  .mw-nav .ci-btn {
+    font-family: courier;
+    margin-top: 7px;
+  }
+  .mw-nav {
+   position: absolute;
+   right: 0;
+   top: 0;
+  }
+
+
+
+
+/*///////////////////////////// Calender styling //////////////////////*/
  
  @media only screen and (max-width: 768px) {
 

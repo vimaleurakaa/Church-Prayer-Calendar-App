@@ -43,8 +43,6 @@
             </p>
           </div>
           <div id="content"></div>
-          <div id="no-page"></div>
-          <ons-button id="testID">Click Me</ons-button>
         </ons-col>
       </ons-row>
       <ons-row>
@@ -52,19 +50,9 @@
           <div id="container" class="calendar-container"></div>
         </ons-col>
       </ons-row>
-      <ons-row>
-        <ons-col>
-          <ons-list>
-            <ons-list-header class="event-showcase-header">Today's Prayer Request</ons-list-header>
-            <ons-list-item class="event-detail-page list-border" modifier="chevron" tappable> Holiday Event 1
-            </ons-list-item>
-            <ons-list-item class="event-detail-page list-border" modifier="chevron" tappable> Holiday Event 2
-            </ons-list-item>
-            <ons-list-item class="event-detail-page list-border" modifier="chevron" tappable> Holiday Event 3
-            </ons-list-item>
-          </ons-list>
-        </ons-col>
-      </ons-row>
+      <div class="footer">
+        <div style="text-align: center; color:#dadada">KPC Calendar 2021</div>
+    </div>
       <script>
         getFirebaseData();
       </script>
@@ -75,17 +63,16 @@
 
 
   <!---------------------------------- Event Detail Page Template --------------------------->
-  <template id="event.html">
-    <ons-page id="event">
+  <template id="even.html">
+    <ons-page id="even">
       <ons-toolbar>
         <div class="left">
           <ons-back-button>Back</ons-back-button>
         </div>
         <div id="toolbar-page2" class="center">Event Details</div>
       </ons-toolbar>
-      <ons-button id="go-back">go back</ons-button>
-      <div id="rootEvent"></div>
-      <div id="rootHoliday"></div>
+
+
       <p>This is the second page.</p>
       <script>
         eventsFragment();
@@ -95,11 +82,11 @@
 
 
   <!-- Event Details PAGE Fragment -->
-  <template id="event.htm">
-    <ons-page id="even" style="background-color: red;">
+  <template id="event.html">
+    <ons-page id="event" style="background-color: red;">
       <ons-toolbar>
         <div class="left">
-          <ons-back-button onclick="backPress()">Back</ons-back-button>
+          <ons-back-button>Back</ons-back-button>
         </div>
         <div class=" center">Event Details
         </div>
@@ -113,8 +100,7 @@
           </div>
         </div>
 
-        <div id="root_2"></div>
-
+   
         <ons-card class="card-header">
           <div class="title">
             Verse of the Day
@@ -124,40 +110,15 @@
             <p class="verse-auth">Proverbs 18:10</p>
           </div>
         </ons-card>
-
-        <div id="root_" class="event-wrapper">
-
           <ons-list-item class="list-item-header">
             <div class="center">
               Prayer Points for the Day
             </div>
           </ons-list-item>
 
-
-          <ons-list class="prayer-list">
-            <ons-list-item class="border-list prayer-list-item" tappable>1. Pray for the peace in the Nation.
-            </ons-list-item>
-            <ons-list-item class="border-list prayer-list-item" tappable>2. Pray for the protection of our Nation from
-              the enemies,
-              violence and from the terrorists.</ons-list-item>
-            <ons-list-item class="border-list prayer-list-item" tappable>3. Pray for them who works in the Army to be
-              protected and for
-              their families.</ons-list-item>
+          <ons-list id="prayer-data" class="prayer-list">
+            <p style="padding: 0 10px; text-align: center;">No data available, please check later</p>
           </ons-list>
-
-
-          <!-- <ons-card class="card">
-            <div class="title card__title">Prayer Points</div>
-            <div class="content card__content">
-              <ol class="prayer-list">
-                <li>Simple "pull to refresh" functionality to update data, functionality to update data</li>
-                <li>Simple "pull to refresh" functionality to update data.</li>
-                <li>Simple "pull to refresh" functionality to update data.</li>
-                <li>Simple "pull to refresh" functionality to update data.</li>
-              </ol>
-            </div>
-          </ons-card> -->
-
 
           <ons-list-item class="list-item-header">
             <div class="center">
@@ -165,49 +126,16 @@
             </div>
           </ons-list-item>
 
-
-          <ons-list class="prayer-list">
-
-            <ons-list-item class="list-item">
-              <div class="left list-item__left">
-                <div class="list-item__thumbnail calender-thumb">
-                  <div class="calender-thumb-date">12</div>
-                </div>
-              </div>
-              <div class="center list-item__center">Holiday event title</div>
-            </ons-list-item>
-
-            <ons-list-item class="list-item">
-              <div class="left list-item__left">
-                <div class="list-item__thumbnail calender-thumb">
-                  <div class="calender-thumb-date">13</div>
-                </div>
-              </div>
-              <div class="center list-item__center">Holiday event title</div>
-            </ons-list-item>
-
-
-            <ons-list-item class="list-item">
-              <div class="left list-item__left">
-                <div class="list-item__thumbnail calender-thumb">
-                  <div class="calender-thumb-date">31</div>
-                </div>
-              </div>
-              <div class="center list-item__center">Holiday event title</div>
-            </ons-list-item>
-
-
+            <ons-list id="holiday-data" class="prayer-list">
+              <p style="padding: 0 10px; text-align: center;">No data available, please check later</p>
+            </ons-list>
         </div>
-
-
       </div>
       <div class="footer">
-        <ons-list-item class="list-item">
-          <div class="" style="text-align: center;">KPC Calendar 2021</div>
-        </ons-list-item>
+          <div class="" style="text-align: center; color:#dadada">KPC Calendar 2021</div>
       </div>
       <script>
-        // eventsFragment();
+        eventsFragment();
       </script>
     </ons-page>
   </template>
@@ -221,7 +149,7 @@
   <script src="./admin/js/firebase-config.js"></script>
   <script src="./assets/components/calender.js"></script>
   <script src="./assets/components/events_fragment.js"></script>
-  <script src="./assets/main.js"></script>
+  <script src="./assets/components/main.js"></script>
 
 </body>
 
