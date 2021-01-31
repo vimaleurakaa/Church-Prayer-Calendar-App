@@ -1,6 +1,14 @@
-let prayerdata = [];
-let holidaydata = [];
+//Constant Variables
+const prayerdata = [];
+const holidaydata = [];
+const logMessage = document.getElementById("log");
+const dateError = `<div class="alert alert-danger" role="alert">Date input cannot be empty!</div>`;
+const prayerdataError = `<div class="alert alert-danger" role="alert">Prayer input cannot be empty!</div>`;
+const messageSuccess = `<div class="alert alert-success" role="alert">Successfully Registerd!</div>`;
 const database = firebase.database().ref("data");
+const send = document.getElementById("sendData");
+
+send.addEventListener("click", sendData);
 
 function appendPrayerReuqest(id) {
   let prayerRequest = `
@@ -68,7 +76,6 @@ function getPrayerData() {
     obj["data"] = element[i].value;
     prayerdata.push(obj);
   }
-  console.log(prayerdata);
 }
 
 //Retriving DOM Holiday Data
@@ -79,7 +86,6 @@ function getHolidayData() {
     obj["data"] = element[i].value;
     holidaydata.push(obj);
   }
-  console.log(holidaydata);
 }
 
 function sendData() {
@@ -87,18 +93,22 @@ function sendData() {
     getPrayerData();
     getHolidayData();
 
-    //UpdatePrayer Data
-    for (i = 0; i < prayerdata.length; i++) {
-      setPrayerData(prayerdata[i].data);
+    if (prayerdata.length !== 0 && prayerdata[0].data !== "") {
+      //UpdatePrayer Data
+      for (i = 0; i < prayerdata.length; i++) {
+        setPrayerData(prayerdata[i].data);
+      }
+      //UpdateHoliday Data
+      for (i = 0; i < holidaydata.length; i++) {
+        let datepicker = new Date(document.getElementById("date-picker").value);
+        setHolidayData(datepicker.getDate() + " - " + holidaydata[i].data);
+      }
+    } else {
+      return (logMessage.innerHTML = prayerdataError);
     }
-    //UpdateHoliday Data
-    for (i = 0; i < holidaydata.length; i++) {
-      let datepicker = new Date(document.getElementById("date-picker").value);
-      setHolidayData(datepicker.getDate() + " - " + holidaydata[i].data);
-    }
-
-    document.getElementById();
-  } else alert("Input Date cannot be empty");
+  } else {
+    return (logMessage.innerHTML = dateError);
+  }
 }
 
 //Write data to realtime database
@@ -113,22 +123,11 @@ function setPrayerData(value) {
   const date = database.child(getCalenderDate());
   const child = date.child("prayerData");
   const key = child.push().key;
-  child.update({ [key]: value });
+  child.update({ [key]: value }).then(() => {
+    console.log("updated");
+    logMessage.innerHTML = messageSuccess;
+    setTimeout(function () {
+      location.reload();
+    }, 1000);
+  });
 }
-
-// //Retrive firebase data & store local
-// function getFirebaseData() {
-//   return firebase
-//     .database()
-//     .ref("data")
-//     .once("value")
-//     .then(function (snapshot) {
-//       let value = snapshot.val();
-//       localStorage.setItem("admin_database", JSON.stringify(value));
-//     });
-// }
-
-// //Append data to HTML
-
-// let firebasedata = JSON.parse(localStorage.getItem("admin_database"));
-// console.log(firebasedata);

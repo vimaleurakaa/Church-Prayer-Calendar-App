@@ -1,65 +1,80 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Admin Dashboard</title>
-    <link rel='icon' href='/assets/img/logo.png' type='image/x-icon'>
+    <link rel="icon" href="/assets/img/logo.png" type="image/x-icon" />
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
-        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <link rel="stylesheet" href="./css/reset.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
-    <link rel="stylesheet" href="./css/main.css">
-</head>
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+      integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="./css/reset.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css"
+    />
+    <link rel="stylesheet" href="./css/main.css" />
+  </head>
 
-<body>
+  <body>
     <main>
+      <header>
+        <nav class="nav-bar">
+          <div class="logo-wrapper">
+            <p>KPC Admin Panel</p>
+          </div>
+          <a class="admin" href="#"
+            >Logout &nbsp; <i class="fas fa-sign-out-alt"></i
+          ></a>
+        </nav>
+      </header>
 
-        <header>
-            <nav class="nav-bar">
-                <div class="logo-wrapper">
-                    <p>KPC Admin Panel</p>
+      <section>
+        <div class="container">
+          <div class="row">
+            <div class="col-12">
+              <div class="card form-card">
+                <div class="card-header">Add New Calender Data</div>
+                <img class="card-img-top" src="" alt="" />
+                <div class="card-body">
+                  <label for="date-picker">Select a Date</label>
+                  <input
+                    id="date-picker"
+                    class="form-control"
+                    type="date"
+                    style="width: 50%"
+                  />
+                  <div id="prayer-requests"></div>
+                  <hr />
+                  <div id="holiday-requests"></div>
+
+                  <div class="spacer-top">
+                    <button class="btn btn-outline-primary" id="add-prayer">
+                      Add Prayer Request
+                    </button>
+                    <button class="btn btn-outline-info" id="add-holiday">
+                      Add Holiday
+                    </button>
+                  </div>
+
+                  <div class="spacer-top">
+                    <button id="sendData" class="btn btn-success">
+                      Submit Calender Data
+                    </button>
+                  </div>
+                  <div id="log" class="message-log"></div>
                 </div>
-                <a class="admin" href="#">Logout &nbsp; <i class="fas fa-sign-out-alt"></i></a>
-            </nav>
-        </header>
-
-        <section>
-            <div class="container">
-                <div class="row">
-                    <div class="col-12">
-                        <div class="card form-card">
-                            <div class="card-header">
-                                Add New Calender Data
-                            </div>
-                            <img class="card-img-top" src="" alt="">
-                            <div class="card-body">
-                                <label for="date-picker">Select a Date</label>
-                                <input id="date-picker" class="form-control" type="date" style="width: 50%;">
-                                <div id="prayer-requests"></div>
-                                <hr>
-                                <div id="holiday-requests"></div>
-
-                                <div class="spacer-top">
-                                    <button class="btn btn-outline-primary" id="add-prayer">Add Prayer Request</button>
-                                    <button class="btn btn-outline-info" id="add-holiday">Add Holiday</button>
-                                </div>
-
-                                <div class="spacer-top">
-                                    <button class="btn btn-success" onclick="sendData()">Submit Calender
-                                        Data</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+              </div>
             </div>
-        </section>
+          </div>
+        </div>
+      </section>
 
-
-        <!-- <section>
+      <!-- <section>
             <div class="container">
                 <div class="row">
                     <div class="col-12">
@@ -97,39 +112,43 @@
                 </div>
             </div>
         </section> -->
-
     </main>
 
     <script type="text/javascript">
-        function initApp() {
-            firebase.auth().onAuthStateChanged(function (user) {
-                if (user) {
-                    console.log("Logged in Successfully!")
-                } else {
-                    window.location.replace("login.html");
-                }
-            });
-        }
-        window.onload = function () {
-            initApp();
-        };
+      function initApp() {
+        firebase.auth().onAuthStateChanged(function (user) {
+          if (user) {
+            console.log("Logged in Successfully!");
+          } else {
+            window.location.replace("login.html");
+          }
+        });
+      }
+      window.onload = function () {
+        initApp();
+      };
     </script>
 
     <!-- Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
-        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous">
-    </script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
-        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous">
-    </script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
-        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous">
-    </script>
+    <script
+      src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+      integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+      integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+      integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+      crossorigin="anonymous"
+    ></script>
     <script src="https://www.gstatic.com/firebasejs/8.2.1/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/7.14.1/firebase-auth.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.2.1/firebase-database.js"></script>
     <script src="./js/firebase-config.js"></script>
     <script src="./js/main.js"></script>
-</body>
-
+  </body>
 </html>

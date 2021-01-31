@@ -13,13 +13,14 @@ function dateFragment() {
   const urlPath = location.href.substring(location.href.indexOf("?") + 1);
   let database = JSON.parse(localStorage.getItem("database"));
   const path = database[urlPath];
-  
+
   if (database != null) {
     const prayer_root = document.getElementById("prayer-data");
     const holiday_root = document.getElementById("holiday-data");
+    document.getElementById("selectedDate").innerHTML = urlPath;
     const prayerdata = path["prayerData"];
     const holidaydata = path["holidayData"];
-   
+
     prayerData(prayer_root, prayerdata);
     holidayData(holiday_root, holidaydata);
   } else {
@@ -35,7 +36,7 @@ function prayerData(element, data) {
       element.innerHTML += `
       <ons-list-item class="border-list prayer-list-item" tappable>
         ${i}
-      </ons-list-item>`
+      </ons-list-item>`;
     });
   }
 }
@@ -48,7 +49,7 @@ function holidayData(element, data) {
       element.innerHTML += `
       <ons-list-item class="list-item list-border">
        <div class="center list-item__center"> ${i}</div>
-    </ons-list-item>`
+    </ons-list-item>`;
     });
   }
 }
