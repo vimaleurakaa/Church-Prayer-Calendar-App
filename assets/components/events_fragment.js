@@ -80,6 +80,7 @@ function getFirebaseData() {
 //Get Daily Verse
 function dailyVerse() {
   const dailyVerse = document.getElementById("daily_verse");
+
   async function getVerse() {
     const response = await fetch(
       "https://beta.ourmanna.com/api/v1/get/?format=json"
