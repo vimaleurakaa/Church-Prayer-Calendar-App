@@ -19,12 +19,7 @@
 
 <body>
   <!-- Partials, LIVE Code Renderer -->
-  <ons-navigator id="root" page="home.html" swipeable>
-
-  </ons-navigator>
-
-
-
+  <ons-navigator id="root" page="home.html" swipeable></ons-navigator>
 
   <!-- Home PAGE Fragment -->
   <template id="home.html">
@@ -35,12 +30,7 @@
       <ons-row>
         <ons-col class="home-banner-container">
           <div class="home-banner" style="color: #fff;">
-
-            <p class="verse" style="padding: 20px;">
-              Verse of the Month<br><br>
-              The name of the Lord is a strong tower: the righteous runneth into it, and is safe.<br><br>
-              <span style="float: right;">Proverbs 18:10</span>
-            </p>
+            <p id="daily_verse" class="verse" style="padding: 20px;">Loading Daily Verse...</p>
           </div>
           <div id="content"></div>
         </ons-col>
@@ -55,6 +45,7 @@
     </div>
       <script>
         getFirebaseData();
+        dailyVerse();
       </script>
     </ons-page>
   </template>
@@ -63,22 +54,7 @@
 
 
   <!---------------------------------- Event Detail Page Template --------------------------->
-  <template id="even.html">
-    <ons-page id="even">
-      <ons-toolbar>
-        <div class="left">
-          <ons-back-button>Back</ons-back-button>
-        </div>
-        <div id="toolbar-page2" class="center">Event Details</div>
-      </ons-toolbar>
 
-
-      <p>This is the second page.</p>
-      <script>
-        eventsFragment();
-      </script>
-    </ons-page>
-  </template>
 
 
   <!-- Event Details PAGE Fragment -->
@@ -103,11 +79,11 @@
    
         <ons-card class="card-header">
           <div class="title">
-            Verse of the Day
+            Quote of the year
           </div>
           <div class="content">
-            <p class="verse">The name of the Lord is a strong tower: the righteous runneth into it, and is safe.</p>
-            <p class="verse-auth">Proverbs 18:10</p>
+            <p  class="verse">Don’t pray when you feel like it. Have an appointment with the Lord and keep it. A man is powerful on his knees</p>
+            <p class="verse-auth">-Corrie Ten Boom</p>
           </div>
         </ons-card>
           <ons-list-item class="list-item-header">
@@ -117,7 +93,6 @@
           </ons-list-item>
 
           <ons-list id="prayer-data" class="prayer-list">
-            <p style="padding: 0 10px; text-align: center;">No data available, please check later</p>
           </ons-list>
 
           <ons-list-item class="list-item-header">
@@ -127,7 +102,7 @@
           </ons-list-item>
 
             <ons-list id="holiday-data" class="prayer-list">
-              <p style="padding: 0 10px; text-align: center;">No data available, please check later</p>
+              
             </ons-list>
         </div>
       </div>
@@ -150,7 +125,6 @@
   <script src="./assets/components/calender.js"></script>
   <script src="./assets/components/events_fragment.js"></script>
   <script src="./assets/components/main.js"></script>
-
 </body>
 
 </html>

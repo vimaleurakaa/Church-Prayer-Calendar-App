@@ -131,3 +131,24 @@ function setPrayerData(value) {
     }, 1000);
   });
 }
+
+let getrequest = firebase.database().ref("data");
+
+getrequest.on("value", (snapshot) => {
+  const data = snapshot.val();
+  Object.entries(data).map((item) => {
+    const table = `
+      <tr>
+      <th scope="row">${item[0]}</th>
+      <td>${Object.values(item[1].prayerData)}</td>
+      <td>${
+        item[1].hasOwnProperty("holidayData")
+          ? Object.values(item[1].holidayData)
+          : "No Data"
+      }</td>
+    </tr>
+    <tr>
+    `;
+    $("#calendar-data-table").prepend(table);
+  });
+});

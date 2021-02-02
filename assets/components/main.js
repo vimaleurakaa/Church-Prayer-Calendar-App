@@ -9,6 +9,7 @@ $(document).ready(function () {
     }
   }
 
+  //document.getElementById("event").onInit = function () {};
   //Navigate Page direct URL
   if (location.hash.split("?")[0] === "#date") {
     document.getElementById("root").pushPage("event.html");

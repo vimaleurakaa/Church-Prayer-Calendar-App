@@ -71,3 +71,9 @@ body{
     margin-bottom: 2px;
 }
 
+table.sortable thead {
+    background-color:#eee;
+    color:#666666;
+    font-weight: bold;
+    cursor: default;
+}
