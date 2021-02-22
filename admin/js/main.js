@@ -3,7 +3,7 @@ const prayerdata = [];
 const holidaydata = [];
 const logMessage = document.getElementById("log");
 const dateError = `<div class="alert alert-danger" role="alert">Date input cannot be empty!</div>`;
-const prayerdataError = `<div class="alert alert-danger" role="alert">Prayer input cannot be empty!</div>`;
+const prayerdataError = `<div class="alert alert-danger" role="alert">There was no prayer input, but if you have updated Holiday, its sucessfully updated!</div>`;
 const messageSuccess = `<div class="alert alert-success" role="alert">Successfully Registerd!</div>`;
 const database = firebase.database().ref("data");
 const send = document.getElementById("sendData");
@@ -93,15 +93,20 @@ function sendData() {
     getPrayerData();
     getHolidayData();
 
-    if (prayerdata.length !== 0 && prayerdata[0].data !== "") {
-      //UpdatePrayer Data
-      for (i = 0; i < prayerdata.length; i++) {
-        setPrayerData(prayerdata[i].data);
-      }
+    if (holidaydata.length !== 0 && holidaydata[0].data !== "") {
       //UpdateHoliday Data
       for (i = 0; i < holidaydata.length; i++) {
         let datepicker = new Date(document.getElementById("date-picker").value);
         setHolidayData(datepicker.getDate() + " - " + holidaydata[i].data);
+      }
+    } else {
+      console.log("No Holiday Data!");
+    }
+
+    if (prayerdata.length !== 0 && prayerdata[0].data !== "") {
+      //UpdatePrayer Data
+      for (i = 0; i < prayerdata.length; i++) {
+        setPrayerData(prayerdata[i].data);
       }
     } else {
       return (logMessage.innerHTML = prayerdataError);
