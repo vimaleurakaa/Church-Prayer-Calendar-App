@@ -1,10 +1,11 @@
 const holidayRecord = `<p style="padding: 0 10px; text-align: center;">No holiday record found for the selected date.</p>`;
-const prayerRecord = `<p style="padding: 0 10px; text-align: center;">Data not available please check back later.</h1>`;
-const nertworkError = `<p style="padding: 0 10px; text-align: center;">Please make sure your internet connection is Stable!</h1>`;
+const prayerRecord = `<p style="padding: 0 10px; text-align: center;">Data not available please check back later.</p>`;
+const nertworkError = `<p style="padding: 0 10px; text-align: center;">Please make sure your internet connection is Stable!</p>`;
 
 function eventsFragment() {
   // Lifecycle hook (`init`)
   document.getElementById("event").onInit = function () {
+    $(".current_year").text(new Date().getFullYear());
     dateFragment();
     this.onShow = function () {};
     this.onHide = function () {};

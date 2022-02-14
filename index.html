@@ -25,7 +25,7 @@
   <template id="home.html">
     <ons-page id="home">
       <ons-toolbar>
-        <div id="tab" class="center">KPC Prayer Calender 2021</div>
+        <div id="tab" class="center">KPC Prayer Calender <span class="current_year"></span></div>
       </ons-toolbar>
       <ons-row>
         <ons-col class="home-banner-container">
@@ -41,8 +41,8 @@
         </ons-col>
       </ons-row>
       <div class="footer">
-        <div style="text-align: center; color:#dadada">KPC Calendar 2021</div>
-    </div>
+        <div style="text-align: center; color:#dadada">KPC Calendar <span class="current_year"></span></div>
+      </div>
       <script>
         getFirebaseData();
         dailyVerse();
@@ -76,38 +76,38 @@
           </div>
         </div>
 
-   
+
         <ons-card class="card-header">
           <div class="title">
             Quote of the year
           </div>
           <div class="content">
-            <p  class="verse">Don’t pray when you feel like it. Have an appointment with the Lord and keep it. A man is powerful on his knees</p>
+            <p class="verse">Don’t pray when you feel like it. Have an appointment with the Lord and keep it. A man is
+              powerful on his knees</p>
             <p class="verse-auth">-Corrie Ten Boom</p>
           </div>
         </ons-card>
-          <ons-list-item class="list-item-header">
-            <div class="center">
-              Prayer Points for the Day
-            </div>
-          </ons-list-item>
+        <ons-list-item class="list-item-header">
+          <div class="center">
+            Prayer Points for the Day
+          </div>
+        </ons-list-item>
 
-          <ons-list id="prayer-data" class="prayer-list">
-          </ons-list>
+        <ons-list id="prayer-data" class="prayer-list">
+        </ons-list>
 
-          <ons-list-item class="list-item-header">
-            <div class="center">
-              Holidays
-            </div>
-          </ons-list-item>
+        <ons-list-item class="list-item-header">
+          <div class="center">Holidays
+          </div>
+        </ons-list-item>
 
-            <ons-list id="holiday-data" class="prayer-list">
-              
-            </ons-list>
-        </div>
+        <ons-list id="holiday-data" class="prayer-list">
+
+        </ons-list>
+      </div>
       </div>
       <div class="footer">
-          <div class="" style="text-align: center; color:#dadada">KPC Calendar 2021</div>
+        <div class="" style="text-align: center; color:#dadada">KPC Calendar <span class="current_year"></span></div>
       </div>
       <script>
         eventsFragment();

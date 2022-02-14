@@ -1,6 +1,7 @@
 //ons.forcePlatformStyling("ios");
 
 $(document).ready(function () {
+  $(".current_year").text(new Date().getFullYear());
   //Navigate Page on Date Select
   function getSelectedDate(clickDate) {
     document.getElementById("root").pushPage("event.html");
